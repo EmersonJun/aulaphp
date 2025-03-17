@@ -16,7 +16,7 @@
 
     ?>
     <p><strong>idade: </strong><?= $idade?></p>
-    <p><strong>salario: R$</strong><?= number_format($salario, 2, ",", ".")?></p>
+    <p><strong>salario: R$</strong><?= number_format($salario, 2, ",", ".");?></p>
     <p><strong>faculdade: </strong><?php echo $faculdade;?></p>
 
     <?php 
