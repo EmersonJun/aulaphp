@@ -45,11 +45,24 @@
     somar(34, 26);
 
     function somarNumeros(...$numeros){
-        var_dump($numeros);
+        //var_dump($numeros);
+        for($i = 0; $i < count($numeros[$i]);$i++){
+            //$soma += $numeros[$i];
+        }
     }
-    somarNumeros(2, 2, 2, 2, 2, 2);
-
+    //somarNumeros(2, 2, 2, 2, 2, 2);
     
-    ?>
+    function algumCoisa($nome, $numro, $texto, ...$coisas){
+        var_dump($coisas);
+    }
+    algumCoisa("jose", 99, "oi", 1, 7, 9, "ola", true);
+    tituloBonito("outras funcoes");
+
+    function calcularIdade($nome, $ano){
+        $idade = 2025 - $ano;
+        echo "<p>$nome tem $idade anos</p>";
+    }
+    calcularIdade("pedro", 2006);
+    ?>  
 </body>
 </html>
