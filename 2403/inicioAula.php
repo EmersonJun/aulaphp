@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php 
+    //declare(scrict_types=1);
     function titulo(){
     echo "<h2>titulo 2</h2>";
     }
@@ -63,6 +64,42 @@
         echo "<p>$nome tem $idade anos</p>";
     }
     calcularIdade("pedro", 2006);
+
+    function calcularTriangulo(){
+        echo "<br> ^";
+        function funcional(){
+            echo "<br> ta pago";
+        }
+    }
+
+    function somaCinco(&$num){// foco no &
+        $num += 5;
+        echo "<br> numero = $num";
+    }
+    $idade = 20;
+    echo "idade 1 = $idade";
+    somaCinco($idade);
+    echo "idade 2 = $idade";
+
+    function conta($a , $b, &$resposta){
+        $resposta = $a + $b;
+    }
+    $resultadoSoma = 0;
+    conta (0, 5, $resultadoSoma);
+    echo "<br>$resultadoSoma";
+
+    function subtracao($a, $b=5){
+        $sub = $a-$b;
+        echo "<br>subtracao = $sub";
+    }
+    subtracao(2);
+    
+    function divisao(float $a, float $b) : float{
+        $div = $a / $b;
+        return $div;
+    }
+    divisao("10", 10);
+
     ?>  
 </body>
 </html>
