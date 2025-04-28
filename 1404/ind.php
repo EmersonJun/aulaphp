@@ -86,4 +86,34 @@
     Nome;
 
     echo "$outrotexto";
+
+    echo "<hr>";
+    $str = "aaabbbbccc";
+    $tam = strlen($str);
+
+    echo "<br>String ".$str;
+    echo "<br>quantidade de caracteres ".$str;
+
+    $str = "abc123";
+    $pedaco = substr($str, 3, 3);
+    $pedaco2 = substr($str, 1, 5);
+    echo "<br> pedaco: ".$pedaco;
+    echo "<br> pedaco: ".$pedaco2;
+
+    $texto = "uM MOntE De pecOAs";
+    $up = strtoupper($texto);
+    $ub = strtolower($texto);
+    $uc = ucfirst($texto);
+    $uw = ucwords($texto);
+
+    echo "<br> String: ".$texto;
+    echo "<br> toupper: ".$up;
+    echo "<br> tolower: ".$ub;
+    echo "<br> ucfirst: ".$uc;
+    echo "<br> ucworlds: ".$uw;
+
+    $uc_lo = ucfirst($ub);
+    $ucw_lo = ucwords($ub);
+    echo "<br> ucfirst 2: ".$uc_lo;
+    echo "<br> ucworlds 2: ".$ucw_lo;
 ?>
