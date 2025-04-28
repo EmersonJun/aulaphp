@@ -12,7 +12,30 @@
     $banco = new mysqli("localhost:3307", "root", "", "usuarios");
     // $banco = new mysqli();
 
-    var_dump($banco);
+    echo "<pre>";
+    //var_dump($banco);
+
+    $q = "SELECT * FROM usuarios";
+    $resp = $banco->query($q);
+    var_dump($resp);
+
+    $usu = $resp->fetch_object();
+    print_r($usu);
+    $usu = $resp->fetch_object();
+    print_r($usu);
+
+    echo "<hr>";
+    $q = "SELECT * FROM usuarios WHERE usuario='jose'";
+    $resp = $banco->query($q);
+    var_dump($resp);
+
+    $usu = $resp->fetch_object();
+    print_r($usu);
+
+    echo "<br>ID: ".$usu->id;
+    echo "<br>USUARIO: ".$usu->usuario;
+    echo "<br>NOME: ".$usu->nome;
+    echo "<br>SENHA: ".$usu->senha;
     ?>
 </body>
 </html>
