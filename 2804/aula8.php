@@ -15,8 +15,8 @@
     echo "<pre>";
     //var_dump($banco);
 
-    $q = "SELECT * FROM usuarios";
-    $resp = $banco->query($q);
+        $q = "SELECT * FROM usuarios";
+        $resp = $banco->query($q);
     var_dump($resp);
 
     $usu = $resp->fetch_object();
