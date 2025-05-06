@@ -21,7 +21,8 @@
     // print_r($tarefa);
     echo "<h3>tarefas $usuario</h3>";
     while($tarefa = $resp->fetch_object()){
-        echo "<br> - " . $tarefa->texto;
+        $tid = $tarefa->id;
+        echo "<br> - " . $tarefa->texto. "->< a href='apagar.php?id=$tid'";
     }
 ?>
 
