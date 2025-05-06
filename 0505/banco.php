@@ -20,14 +20,14 @@
             if($senha === $obj_usuario->senha){
                 //echo "<br> sucesso!";
                 //echo "<br> Bem Vindo " . $obj_usuario->nome;
+                $_SESSION['usuario']=$obj_usuario->usuario;
+                $_SESSION['id_usuario']=$obj_usuario->id;
                 return true;
             }else{
                 //echo "<br>... erro senha";
                 return false;
             }
-
         }
-
     }
 
 

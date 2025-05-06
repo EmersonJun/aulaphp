@@ -5,6 +5,7 @@
 </form>
 
 <?php
+    session_start();
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         echo "<br>...fazendo login";
@@ -17,27 +18,15 @@
         }else{
             echo "<br>..procurando no banco...";
 
-            $banco = new mysqli("localhost:3307", "root", "", "usuarios");
-            $q = "SELECT * FROM usuarios WHERE usuario='$usuario_formulario'";
-            $resp = $banco->query($q);
-            // var_dump($resp);
-
-            if($resp->num_rows <= 0){
-                echo "<br>... nao encontrado";
+            require_once "banco.php";
+            // fazerLogin($usuario_formulario, $senha_formulario);
+            if(fazerLogin($usuario_formulario, $senha_formulario)){
+                // echo "sucesso";
+                header("Location: dashboard.php");
             }else{
-                echo "<br> opa... ver senha";
-
-                $obj_usuario = $resp->fetch_object();
-                if($senha_formulario === $obj_usuario->senha){
-                    echo "<br> sucesso!";
-                }else{
-                    echo "<br>... erro senha";
-                }
-
+                echo "erro x.X";
             }
-
-
-
+            
         }
 
 
