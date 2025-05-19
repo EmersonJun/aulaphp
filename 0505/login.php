@@ -1,37 +1,32 @@
 <form action="" method="post">
     Usuario: <input type="text" name="usuario">
-    Senha: <input type="text" name="senha">
-    <input type="submit" value="Fazer Login">
+    Senha: <input type="password" name="senha">
+    <input type="submit" value="Login">
 </form>
 
 <?php
-    session_start();
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        echo "<br>...fazendo login";
+session_start();
 
-        $usuario_formulario = $_POST['usuario'] ?? null;
-        $senha_formulario = $_POST['senha'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-        if(empty($usuario_formulario) || empty($senha_formulario)){
-            echo "<br>..erro no usuario ou senha";
-        }else{
-            echo "<br>..procurando no banco...";
+    $usuario_formulario = $_POST['usuario'] ?? null;
+    $senha_formulario = $_POST['senha'] ?? null;
 
-            require_once "banco.php";
-            // fazerLogin($usuario_formulario, $senha_formulario);
-            if(fazerLogin($usuario_formulario, $senha_formulario)){
-                // echo "sucesso";
-                header("Location: dashboard.php");
-            }else{
-                echo "erro x.X";
-            }
-            
+    if (is_null($usuario_formulario) || is_null($senha_formulario)) {
+        echo "Fazer Login...";
+    } else {
+
+        require "banco.php";
+
+        if (fazerLogin($usuario_formulario, $senha_formulario)) {
+            echo "Sucesso!";
+            header("Location: dashboard.php");
+        } else {
+            echo "Erro X.x";
         }
-
-
-    }else{
-        echo "<br>Fazer Login...";
     }
+}
+
 
 ?>

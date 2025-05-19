@@ -2,32 +2,31 @@
 
     $banco = new mysqli("localhost:3307", "root", "", "usuarios");
 
-
-    function fazerLogin($usuario, $senha){
+    
+    function fazerLogin($usu, $sen){
         global $banco;
-        
-        $q = "SELECT * FROM usuarios WHERE usuario='$usuario'";
+
+        $q = "SELECT * FROM usuarios WHERE usuario='$usu'";
         $resp = $banco->query($q);
+
         // var_dump($resp);
-
         if($resp->num_rows <= 0){
-            //echo "<br>... nao encontrado";
-            return false;
+            return false; // "Usuario não encontrado...";
         }else{
-            //echo "<br> opa... ver senha";
+            
+            $obj_usuario_resposta = $resp->fetch_object();
+            // var_dump($obj_usuario_resposta);
 
-            $obj_usuario = $resp->fetch_object();
-            if($senha === $obj_usuario->senha){
-                //echo "<br> sucesso!";
-                //echo "<br> Bem Vindo " . $obj_usuario->nome;
-                $_SESSION['usuario']=$obj_usuario->usuario;
-                $_SESSION['id_usuario']=$obj_usuario->id;
-                return true;
+            if($sen === $obj_usuario_resposta->senha){
+                $_SESSION['usuario'] = $obj_usuario_resposta->usuario;
+                $_SESSION['id-usuario'] = $obj_usuario_resposta->id;
+                return true; // echo "Sucesso!";
             }else{
-                //echo "<br>... erro senha";
-                return false;
+                return false; // echo "Senha errada >.<";
             }
+
         }
+        
     }
 
 
